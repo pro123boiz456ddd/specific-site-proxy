@@ -1,0 +1,19 @@
+{
+  "name": "specific-site-proxy",
+  "version": "1.0.0",
+  "description": "Preset reverse proxy relay for opening Instagram, YouTube, and TikTok via keyword-free alias routes without exposing an arbitrary open URL unblocker.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "check": "node --check server.js && node --check routes/proxy.js && node --check middleware/headers.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "http-proxy-middleware": "^2.0.6"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

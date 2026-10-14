@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Specific-Site Relay Hub</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="status-dot" id="health-dot" title="Checking relay status..."></span>
+      <h1>Specific-Site Relay Hub</h1>
+      <span class="badge">Preset Origin Allowlist</span>
+    </div>
+    <div class="health-meta" id="health-meta">Connecting to local relay...</div>
+  </header>
+
+  <main class="container">
+    <section class="intro-banner">
+      <div>
+        <h2>Direct Application Launcher</h2>
+        <p>
+          Opens only the three allowlisted applications through keyword-free alias routes
+          (<code>/s/alpha</code>, <code>/s/beta</code>, <code>/s/gamma</code>) and Base64URL-encoded
+          subpaths (<code>/r/&lt;alias&gt;/&lt;token&gt;</code>). Arbitrary URL unblocking is disabled.
+        </p>
+      </div>
+    </section>
+
+    <section class="cards-grid" id="target-cards">
+      <!-- Card 1: Instagram (Alias: alpha) -->
+      <article class="site-card" data-alias="alpha">
+        <div class="card-header accent-alpha">
+          <span class="alias-tag">Route: /s/alpha</span>
+          <h3>Instagram</h3>
+          <p class="subtitle">Direct relay via opaque alias <code>alpha</code></p>
+        </div>
+        <div class="card-body">
+          <div class="preset-group">
+            <span class="preset-label">Encoded Quick Views (Keyword-Free URLs):</span>
+            <div class="preset-Chips">
+              <button class="chip-btn" data-alias="alpha" data-subpath="/?hl=en">Home Feed</button>
+              <button class="chip-btn" data-alias="alpha" data-subpath="/explore/">Explore</button>
+              <button class="chip-btn" data-alias="alpha" data-subpath="/reels/">Reels</button>
+            </div>
+          </div>
+          <div class="card-actions">
+            <button class="primary-btn launch-frame-btn" data-alias="alpha" data-subpath="/?hl=en">
+              Open in Viewport
+            </button>
+            <a class="secondary-btn" href="/r/alpha/Lz9obD1lbg" target="_blank" rel="noopener">
+              Open Dedicated Tab
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 2: YouTube (Alias: beta) -->
+      <article class="site-card" data-alias="beta">
+        <div class="card-header accent-beta">
+          <span class="alias-tag">Route: /s/beta</span>
+          <h3>YouTube</h3>
+          <p class="subtitle">Direct relay via opaque alias <code>beta</code></p>
+        </div>
+        <div class="card-body">
+          <div class="preset-group">
+            <span class="preset-label">Encoded Quick Views (Keyword-Free URLs):</span>
+            <div class="preset-Chips">
+              <button class="chip-btn" data-alias="beta" data-subpath="/?gl=US">Home</button>
+              <button class="chip-btn" data-alias="beta" data-subpath="/feed/trending">Trending</button>
+              <button class="chip-btn" data-alias="beta" data-subpath="/feed/subscriptions">Subscriptions</button>
+            </div>
+          </div>
+          <div class="card-actions">
+            <button class="primary-btn launch-frame-btn" data-alias="beta" data-subpath="/?gl=US">
+              Open in Viewport
+            </button>
+            <a class="secondary-btn" href="/r/beta/Lz9nbD1VUw" target="_blank" rel="noopener">
+              Open Dedicated Tab
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 3: TikTok (Alias: gamma) -->
+      <article class="site-card" data-alias="gamma">
+        <div class="card-header accent-gamma">
+          <span class="alias-tag">Route: /s/gamma</span>
+          <h3>TikTok</h3>
+          <p class="subtitle">Direct relay via opaque alias <code>gamma</code></p>
+        </div>
+        <div class="card-body">
+          <div class="preset-group">
+            <span class="preset-label">Encoded Quick Views (Keyword-Free URLs):</span>
+            <div class="preset-Chips">
+              <button class="chip-btn" data-alias="gamma" data-subpath="/explore">Explore</button>
+              <button class="chip-btn" data-alias="gamma" data-subpath="/following">Following</button>
+              <button class="chip-btn" data-alias="gamma" data-subpath="/live">Live</button>
+            </div>
+          </div>
+          <div class="card-actions">
+            <button class="primary-btn launch-frame-btn" data-alias="gamma" data-subpath="/explore">
+              Open in Viewport
+            </button>
+            <a class="secondary-btn" href="/r/gamma/L2V4cGxvcmU" target="_blank" rel="noopener">
+              Open Dedicated Tab
+            </a>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="viewport-section">
+      <div class="viewport-toolbar">
+        <div class="active-route-indicator">
+          <span class="label">Active Relay Route:</span>
+          <code id="active-route-display">None selected — pick a site above</code>
+        </div>
+        <div class="viewport-controls">
+          <button id="reload-viewport-btn" class="secondary-btn small-btn" disabled>Reload</button>
+          <a id="popout-viewport-link" class="secondary-btn small-btn disabled-link" href="#" target="_blank" rel="noopener">
+            Open Full Tab
+          </a>
+        </div>
+      </div>
+      <div class="iframe-wrapper">
+        <iframe
+          id="relay-viewport"
+          title="Specific-Site Relay Viewport"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
+        ></iframe>
+        <div class="empty-viewport" id="empty-viewport-overlay">
+          <p>Select <strong>Instagram</strong>, <strong>YouTube</strong>, or <strong>TikTok</strong> above to open the website directly through its keyword-free relay channel.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>
